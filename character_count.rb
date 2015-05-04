@@ -1,12 +1,17 @@
 class CharCount
-  def self.char_count(input)
-    @hash_puppy = input.chars.reduce(Hash.new(0)) do |hash, value|
-      hash[value] += 1; hash
-    end
-    output
+  attr_reader :input
+
+  def initialize(input)
+    @input = input
   end
 
-  def self.output
-    @hash_puppy.each { |key, value| puts "#{key}: #{value}\n"}
+  def char_count
+    input.chars.reduce(Hash.new(0)) do |hash, value|
+      hash[value] += 1; hash
+    end
+  end
+
+  def output
+    char_count.each { |key, value| puts "#{key}: #{value}\n"}
   end
 end
